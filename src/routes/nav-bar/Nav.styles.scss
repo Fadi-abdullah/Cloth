@@ -1,0 +1,23 @@
+.nav {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  .logo {
+    display: grid;
+    justify-items: start;
+    align-items: center;
+    & > a {
+      display: grid;
+      place-items: center;
+      height: 100%;
+    }
+  }
+  .navLinks {
+    display: flex;
+    & > a {
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      margin-left: 1rem;
+    }
+  }
+}
