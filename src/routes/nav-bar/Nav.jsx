@@ -1,7 +1,11 @@
 import { Link, Outlet } from 'react-router-dom';
 import './Nav.styles.scss';
+import { useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
+import { signOutUser } from '../../utilz/firebase/firebase';
 
 const Nav = () => {
+  const { currentUser } = useContext(UserContext);
   return (
     <>
       <div className="nav">
@@ -11,7 +15,13 @@ const Nav = () => {
         <div className="navLinks">
           <Link to="/">Home</Link>
           <Link to="/shop">Shop</Link>
-          <Link to="/auth">Sign Up</Link>
+          {currentUser ? (
+            <Link to="/" onClick={signOutUser}>
+              Sign out
+            </Link>
+          ) : (
+            <Link to="/auth">Sign Up</Link>
+          )}
         </div>
       </div>
       <Outlet />

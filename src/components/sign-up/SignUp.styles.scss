@@ -1,0 +1,27 @@
+.signUpSection {
+  display: grid;
+  & > * {
+    margin-bottom: 1rem;
+  }
+  .signUpForm {
+    display: grid;
+    button {
+      width: 50%;
+      place-self: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      border: 1px solid black;
+      background-color: transparent;
+      font-size: large;
+      font-weight: 600;
+      transition: all ease-in-out 200ms;
+      &:hover {
+        cursor: pointer;
+        border: 1px solid orangered;
+        border-radius: 4px;
+        background-color: rgb(230, 81, 81);
+        color: white;
+      }
+    }
+  }
+}
