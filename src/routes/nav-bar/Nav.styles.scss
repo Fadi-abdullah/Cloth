@@ -13,6 +13,7 @@
   }
   .navLinks {
     display: flex;
+    align-items: center;
     & > a {
       display: grid;
       place-items: center;

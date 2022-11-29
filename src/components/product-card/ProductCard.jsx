@@ -5,7 +5,7 @@ const ProductCard = (props) => {
   const { name, price, imageUrl } = props.product;
   return (
     <div className="product-card-container">
-      <img src={imageUrl} tag={`${name}`} />
+      <img src={imageUrl} alt={`${name}`} />
       <div className="footer">
         <span className="name">{name}</span>
         <span className="price">{price}</span>
