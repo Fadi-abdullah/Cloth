@@ -10,7 +10,9 @@ import { signOutUser } from '../../utilz/firebase/firebase';
 
 const Nav = () => {
   const { currentUser } = useContext(UserContext);
-  const { isCartOpen } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+
+  const toggle = () => setIsCartOpen(!isCartOpen);
 
   return (
     <>
@@ -28,7 +30,7 @@ const Nav = () => {
           ) : (
             <Link to="/auth">Sign Up</Link>
           )}
-          <CartIcon />
+          <CartIcon toggle={toggle} />
         </div>
         {isCartOpen && <CartDropdown />}
       </div>

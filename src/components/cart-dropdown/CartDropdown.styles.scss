@@ -20,7 +20,12 @@
     height: 240px;
     display: flex;
     flex-direction: column;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     overflow: scroll;
+  }
+  .cart-items::-webkit-scrollbar {
+    display: none;
   }
 
   button {
