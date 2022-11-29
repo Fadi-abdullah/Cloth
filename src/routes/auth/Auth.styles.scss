@@ -1,6 +1,7 @@
 .auth {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: start;
   grid-gap: 3rem;
   padding: 2rem 1rem;
 }

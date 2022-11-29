@@ -1,5 +1,8 @@
 import { createContext, useEffect, useState } from 'react';
-import { googleAuthState } from '../utilz/firebase/firebase';
+import {
+  googleAuthState,
+  createOrGetUserDoc,
+} from '../utilz/firebase/firebase';
 export const UserContext = createContext({
   currentUser: null,
   setCurrentUser: () => null,
@@ -11,6 +14,9 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = googleAuthState((user) => {
+      if (user) {
+        createOrGetUserDoc(user);
+      }
       setCurrentUser(user);
     });
     return unsubscribe;
