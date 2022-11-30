@@ -1,0 +1,20 @@
+.checkout-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.total-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  place-items: center;
+  & > div {
+    grid-column: span 1/6;
+    place-items: center;
+    padding: 1rem;
+    & > * {
+      margin: 1rem;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  }
+}

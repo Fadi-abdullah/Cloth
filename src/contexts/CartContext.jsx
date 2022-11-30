@@ -6,6 +6,9 @@ export const CartContext = createContext({
   cartProducts: [],
   setCartProducts: () => {},
   addProduct: () => {},
+  decreaseQuantity: () => {},
+  increaseQuantity: () => {},
+  deleteProduct: () => {},
 });
 
 export const CartProvider = ({ children }) => {
@@ -16,7 +19,6 @@ export const CartProvider = ({ children }) => {
     const existingProduct = cartProducts.find(
       (cartProduct) => cartProduct.id === product.id
     );
-
     if (existingProduct) {
       const newCartProducts = cartProducts.map((cartProduct) =>
         cartProduct.id === product.id
@@ -29,6 +31,40 @@ export const CartProvider = ({ children }) => {
     return setCartProducts([...cartProducts, { ...product, quantity: 1 }]);
   };
 
-  const value = { isCartOpen, setIsCartOpen, cartProducts, addProduct };
+  const decreaseQuantity = (id) => {
+    const newProductsQuantity = cartProducts.map((product) => {
+      const { quantity } = product;
+      return product.id === id
+        ? quantity > 0
+          ? { ...product, quantity: quantity - 1 }
+          : product
+        : product;
+    });
+    setCartProducts(newProductsQuantity);
+  };
+
+  const increaseQuantity = (id) => {
+    const newProductsQuantity = cartProducts.map((product) =>
+      product.id === id
+        ? { ...product, quantity: product.quantity + 1 }
+        : product
+    );
+    setCartProducts(newProductsQuantity);
+  };
+
+  const deleteProduct = (id) => {
+    const newProducts = cartProducts.filter((product) => product.id !== id);
+    setCartProducts(newProducts);
+  };
+
+  const value = {
+    isCartOpen,
+    setIsCartOpen,
+    cartProducts,
+    addProduct,
+    decreaseQuantity,
+    increaseQuantity,
+    deleteProduct,
+  };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

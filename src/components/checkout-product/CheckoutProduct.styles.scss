@@ -1,0 +1,35 @@
+.checkout-product-container {
+  display: grid;
+  width: 100%;
+  height: 150px;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 30px;
+  place-items: center;
+  border-bottom: 1px solid black;
+  padding: 1rem;
+  img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+  .deleteProduct {
+    cursor: pointer;
+    width: 50%;
+    height: 50%;
+    display: grid;
+    place-items: center;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.quantity-controllers {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  place-items: center;
+}
